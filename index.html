@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden; 
-            height: 100vh; 
+            height: 100dvh; 
             width: 100vw;
             font-family: "Courier New", Courier, monospace; 
         }
@@ -68,18 +68,14 @@
             z-index: 9999; /* Keeps the 0 above the main box and marquee */
         }
 
-        /* Fixed coordinate-accurate animation for absolute edges */
-        @keyframes moveAround {
+                @keyframes moveAround {
             0%   { top: 0; left: 0; }
-            20%  { top: 0; left: calc(100vw - 24px); }
             25%  { top: 0; left: calc(100vw - 24px); }
-            45%  { top: calc(100vh - 24px); left: calc(100vw - 24px); }
-            50%  { top: calc(100vh - 24px); left: calc(100vw - 24px); }
-            70%  { top: calc(100vh - 24px); left: 0; }
-            75%  { top: calc(100vh - 24px); left: 0; }
-            95%  { top: 0; left: 0; }
+            50%  { top: calc(100dvh - 24px); left: calc(100vw - 24px); }
+            75%  { top: calc(100dvh - 24px); left: 0; }
             100% { top: 0; left: 0; }
         }
+
         
         #game-canvas { background: #000; display: block; margin: 20px auto; border: 2px inset #fff; }
     </style>
