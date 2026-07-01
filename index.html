@@ -31,11 +31,22 @@
             animation: moveAround 10s linear infinite;
         }
 
-        @keyframes moveAround {
+                @keyframes moveAround {
+            /* Top edge (Left to Right) */
             0%   { top: 10px; left: 10px; right: auto; }
+            20%  { top: 10px; left: calc(100vw - 30px); right: auto; }
+            
+            /* Right edge (Top to Bottom) */
             25%  { top: 10px; left: auto; right: 10px; }
+            45%  { top: calc(100vh - 50px); left: auto; right: 10px; }
+            
+            /* Bottom edge (Right to Left) */
             50%  { top: calc(100vh - 50px); left: auto; right: 10px; }
+            70%  { top: calc(100vh - 50px); left: 10px; right: auto; }
+            
+            /* Left edge (Bottom to Top) */
             75%  { top: calc(100vh - 50px); left: 10px; right: auto; }
+            95%  { top: 10px; left: 10px; right: auto; }
             100% { top: 10px; left: 10px; right: auto; }
         }
         
