@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aldo López</title>
+    <style>
+        body { background-color: #008080; color: #ffffff; font-family: "Courier New", Courier, monospace; padding: 20px; overflow-x: hidden; }
+        main { background-color: #c0c0c0; color: #000000; border: 4px outset #ffffff; padding: 20px; max-width: 600px; margin: 0 auto; }
+        .marquee-container { background-color: #000000; color: #00ff00; padding: 5px; margin-bottom: 20px; border: 1px inset #ffffff; }
+        
+        /* Easter Egg Animation */
+        #easter-egg {
+            position: absolute;
+            top: 10px; left: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+            color: #ffff00; /* Yellow stands out better */
+            font-weight: bold;
+            animation: moveAround 10s linear infinite;
+        }
+
+        @keyframes moveAround {
+            0%   { top: 10px; left: 10px; }      /* Top-Left */
+            25%  { top: 10px; left: 95%; }       /* Top-Right */
+            50%  { top: 95vh; left: 95%; }       /* Bottom-Right */
+            75%  { top: 95vh; left: 10px; }      /* Bottom-Left */
+            100% { top: 10px; left: 10px; }      /* Back to Top-Left */
+        }
+        
+        #game-canvas { background: #000; display: block; margin: 20px auto; border: 2px inset #fff; }
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="marquee-container">
+            <marquee behavior="scroll" direction="left">System Online... Aldo López... Staff Software Engineer...</marquee>
+        </div>
+
+        <h1>Aldo López</h1>
+        <p>Building things, one byte at a time.</p>
+        
+        <ul>
+            <li><a href="https://github.com/aldolopez" target="_blank">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/aldolopez" target="_blank">LinkedIn</a></li>
+        </ul>
+
+        <div id="game-wrapper"></div>
+        <hr>
+        <p><small>Site constructed with pure HTML5/JS.</small></p>
+    </main>
+
+    <p id="easter-egg">Click me for a surprise...</p>
+
+    <script>
+        document.getElementById('easter-egg').addEventListener('click', function() {
+            if (document.getElementById('game-canvas')) return;
+
+            const wrapper = document.getElementById('game-wrapper');
+            const canvas = document.createElement('canvas');
+            canvas.id = 'game-canvas';
+            canvas.width = 400;
+            canvas.height = 300;
+            wrapper.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            let playerX = 180;
+            
+            function draw() {
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#0f0';
+                ctx.fillRect(playerX, 270, 20, 20);
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && playerX > 0) playerX -= 10;
+                if (e.key === 'ArrowRight' && playerX < 380) playerX += 10;
+            });
+
+            draw();
+        });
+    </script>
+</body>
+</html>
