@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <title>Aldo López</title>
     <style>
-        body { background-color: #008080; color: #ffffff; font-family: "Courier New", Courier, monospace; padding: 20px; overflow-x: hidden; }
+        body { background-color: #008080; color: #ffffff; font-family: "Courier New", Courier, monospace; padding: 20px; overflow-x: hidden; max-width: 100%}
         main { background-color: #c0c0c0; color: #000000; border: 4px outset #ffffff; padding: 20px; max-width: 600px; margin: 0 auto; }
         .marquee-container { background-color: #000000; color: #00ff00; padding: 5px; margin-bottom: 20px; border: 1px inset #ffffff; }
         
-        /* Easter Egg Animation */
         #easter-egg {
             position: absolute;
             top: 10px; left: 10px;
             cursor: pointer;
             text-decoration: underline;
-            color: #ffff00; /* Yellow stands out better */
+            color: #ffff00;
             font-weight: bold;
+            font-size: 18px;
             animation: moveAround 10s linear infinite;
         }
 
@@ -50,7 +50,7 @@
         <p><small>Site constructed with pure HTML5/JS.</small></p>
     </main>
 
-    <p id="easter-egg">Click me for a surprise...</p>
+    <p id="easter-egg">0</p>
 
     <script>
         document.getElementById('easter-egg').addEventListener('click', function() {
