@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Aldo López</title>
     <style>
-        /* Locked layout: zero margin/padding on body ensures perfect coordinate tracking */
+        /* Locked layout: zero margin/padding ensures perfect coordinate tracking */
         body { 
             background-color: #008080; 
             margin: 0;
@@ -15,7 +15,7 @@
             font-family: "Courier New", Courier, monospace; 
         }
 
-        /* Padding moved to main keeps content centered without affecting the coordinate system */
+        /* Main content box */
         main { 
             background-color: #c0c0c0; 
             color: #000000; 
@@ -25,10 +25,34 @@
             margin: 50px auto; 
         }
 
+        /* Smooth CSS Marquee */
+        .marquee-container { 
+            background-color: #000000; 
+            color: #00ff00; 
+            padding: 5px; 
+            margin-bottom: 20px; 
+            border: 1px inset #ffffff;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0%   { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Easter Egg perfectly aligned to the outer edge */
         #easter-egg {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 0;
+            left: 0;
             margin: 0;
             width: 24px;
             height: 24px;
@@ -41,19 +65,20 @@
             font-size: 18px;
             white-space: nowrap;
             animation: moveAround 10s linear infinite;
+            z-index: 9999; /* Keeps the 0 above the main box and marquee */
         }
 
-        /* Fixed coordinate-accurate animation */
+        /* Fixed coordinate-accurate animation for absolute edges */
         @keyframes moveAround {
-            0%   { top: 10px; left: 10px; }
-            20%  { top: 10px; left: calc(100vw - 34px); }
-            25%  { top: 10px; left: calc(100vw - 34px); }
-            45%  { top: calc(100vh - 34px); left: calc(100vw - 34px); }
-            50%  { top: calc(100vh - 34px); left: calc(100vw - 34px); }
-            70%  { top: calc(100vh - 34px); left: 10px; }
-            75%  { top: calc(100vh - 34px); left: 10px; }
-            95%  { top: 10px; left: 10px; }
-            100% { top: 10px; left: 10px; }
+            0%   { top: 0; left: 0; }
+            20%  { top: 0; left: calc(100vw - 24px); }
+            25%  { top: 0; left: calc(100vw - 24px); }
+            45%  { top: calc(100vh - 24px); left: calc(100vw - 24px); }
+            50%  { top: calc(100vh - 24px); left: calc(100vw - 24px); }
+            70%  { top: calc(100vh - 24px); left: 0; }
+            75%  { top: calc(100vh - 24px); left: 0; }
+            95%  { top: 0; left: 0; }
+            100% { top: 0; left: 0; }
         }
         
         #game-canvas { background: #000; display: block; margin: 20px auto; border: 2px inset #fff; }
@@ -62,6 +87,10 @@
 <body>
 
     <main>
+        <div class="marquee-container">
+            <div class="marquee-content">System Online... Aldo López... Staff Software Engineer...</div>
+        </div>
+
         <h1>Aldo López</h1>
         <p>Building things, one byte at a time.</p>
         
