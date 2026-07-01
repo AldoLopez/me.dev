@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Aldo López</title>
-    <style>
-        body { background-color: #008080; color: #ffffff; font-family: "Courier New", Courier, monospace; padding: 20px; overflow-x: hidden; overflow-y: hidden; max-width: 100%}
+      <style>
+        /* Force body to be exactly the viewport size and remove default margins */
+        body { 
+            background-color: #008080; 
+            color: #ffffff; 
+            font-family: "Courier New", Courier, monospace; 
+            padding: 20px; 
+            margin: 0;
+            overflow: hidden; /* This locks both axes */
+            height: 100vh;
+            width: 100vw;
+            box-sizing: border-box;
+        }
+
         main { background-color: #c0c0c0; color: #000000; border: 4px outset #ffffff; padding: 20px; max-width: 600px; margin: 0 auto; }
         .marquee-container { background-color: #000000; color: #00ff00; padding: 5px; margin-bottom: 20px; border: 1px inset #ffffff; }
         
-           #easter-egg {
+        #easter-egg {
             position: absolute;
-            top: 10px; 
-            left: 10px;
             cursor: pointer;
             text-decoration: underline;
             color: #ffff00;
@@ -22,13 +32,12 @@
         }
 
         @keyframes moveAround {
-            0%   { top: 10px; right: auto; left: 10px; }
-            25%  { top: 10px; left: auto; right: 10px); }
-            50%  { top: calc(100vh - 50px); right: 10px}
-            75%  { top: calc(100vh - 50px); right: auto; left: 10px; }
-            100% { top: 10px; left: 10px; }
+            0%   { top: 10px; left: 10px; right: auto; }
+            25%  { top: 10px; left: auto; right: 10px; }
+            50%  { top: calc(100vh - 50px); left: auto; right: 10px; }
+            75%  { top: calc(100vh - 50px); left: 10px; right: auto; }
+            100% { top: 10px; left: 10px; right: auto; }
         }
-
         
         #game-canvas { background: #000; display: block; margin: 20px auto; border: 2px inset #fff; }
     </style>
