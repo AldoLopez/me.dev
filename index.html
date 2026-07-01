@@ -8,24 +8,27 @@
         main { background-color: #c0c0c0; color: #000000; border: 4px outset #ffffff; padding: 20px; max-width: 600px; margin: 0 auto; }
         .marquee-container { background-color: #000000; color: #00ff00; padding: 5px; margin-bottom: 20px; border: 1px inset #ffffff; }
         
-        #easter-egg {
+           #easter-egg {
             position: absolute;
-            top: 10px; left: 10px;
+            top: 10px; 
+            left: 10px;
             cursor: pointer;
             text-decoration: underline;
             color: #ffff00;
             font-weight: bold;
             font-size: 18px;
+            white-space: nowrap; 
             animation: moveAround 10s linear infinite;
         }
 
         @keyframes moveAround {
-            0%   { top: 10px; left: 10px; }      /* Top-Left */
-            25%  { top: 10px; left: 95%; }       /* Top-Right */
-            50%  { top: 95vh; left: 95%; }       /* Bottom-Right */
-            75%  { top: 95vh; left: 10px; }      /* Bottom-Left */
-            100% { top: 10px; left: 10px; }      /* Back to Top-Left */
+            0%   { top: 10px; left: 10px; }
+            25%  { top: 10px; left: calc(100vw - 150px); } /* 150px is approx width of text */
+            50%  { top: calc(100vh - 50px); left: calc(100vw - 150px); }
+            75%  { top: calc(100vh - 50px); left: 10px; }
+            100% { top: 10px; left: 10px; }
         }
+
         
         #game-canvas { background: #000; display: block; margin: 20px auto; border: 2px inset #fff; }
     </style>
